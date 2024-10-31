@@ -52,7 +52,7 @@ jobs:
       - uses: noriban/sign-android-release@v5
         name: Sign app APK
         # ID used to access action output
-        id: sign_app
+        id: sign_app_debug
         with:
           releaseDirectory: app/build/outputs/apk/debug
           signingKeyBase64: ${{ secrets.KEY_STORE }}
