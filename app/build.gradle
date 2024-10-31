@@ -29,36 +29,28 @@ android {
 
     signingConfigs {
         debug {
-            // Debug签名配置
-            if (properties.getProperty("storeFile") != null) {
-                storeFile file(properties.getProperty("storeFile"))
-                storePassword properties.getProperty("storePassword")
-                keyAlias properties.getProperty("keyAlias")
-                keyPassword properties.getProperty("keyPassword")
-            }
+            // Debug签名配置，使用Android自带的debug签名
         }
         release {
-            // Release签名配置
-            if (properties.getProperty("storeFile") != null &&
-                properties.getProperty("storePassword") != null &&
-                properties.getProperty("keyAlias") != null &&
-                properties.getProperty("keyPassword") != null) {
+            // 尝试加载release签名配置
+            try {
                 storeFile file(properties.getProperty("storeFile"))
                 storePassword properties.getProperty("storePassword")
                 keyAlias properties.getProperty("keyAlias")
                 keyPassword properties.getProperty("keyPassword")
-                // 启用v1, v2, v3, v3.1签名
+                // 启用v1, v2签名
                 v1SigningEnabled true
                 v2SigningEnabled true
-                useInMemoryKeyStore true
-                enableStrictJacksonParsing false
-            } else {
-                // 如果Release签名配置不完整或错误，使用Debug签名配置
+                // 启用v3和v4签名
+                enableV3Signing true
+                enableV4Signing true
+            } catch (Exception e) {
+                // 如果加载release签名配置失败，使用debug签名配置
                 signingConfig signingConfigs.debug
             }
         }
     }
-
+    
     buildTypes {
         debug {
             versionNameSuffix '-debug'
