@@ -1,10 +1,10 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import android.view.View
-import io.github.vvb2060.keyattestation.R
-import io.github.vvb2060.keyattestation.databinding.HomeErrorBinding
-import io.github.vvb2060.keyattestation.ktx.toHtml
-import io.github.vvb2060.keyattestation.lang.AttestationException
+import io.github.vvb2060.keyattestation.local.R
+import io.github.vvb2060.keyattestation.local.databinding.HomeErrorBinding
+import io.github.vvb2060.keyattestation.local.ktx.toHtml
+import io.github.vvb2060.keyattestation.local.lang.AttestationException
 import rikka.html.text.HtmlCompat
 import rikka.recyclerview.BaseViewHolder.Creator
 

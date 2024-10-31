@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.ktx
+package io.github.vvb2060.keyattestation.local.ktx
 
 import android.text.Spanned
 import rikka.html.text.HtmlCompat

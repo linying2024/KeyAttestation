@@ -1,14 +1,14 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import com.google.common.base.CharMatcher
 import com.google.common.io.BaseEncoding
-import io.github.vvb2060.keyattestation.R
-import io.github.vvb2060.keyattestation.attestation.Attestation
-import io.github.vvb2060.keyattestation.attestation.AttestationResult
-import io.github.vvb2060.keyattestation.attestation.AuthorizationList
-import io.github.vvb2060.keyattestation.attestation.CertificateInfo
-import io.github.vvb2060.keyattestation.attestation.KnoxAttestation
-import io.github.vvb2060.keyattestation.lang.AttestationException
+import io.github.vvb2060.keyattestation.local.R
+import io.github.vvb2060.keyattestation.local.attestation.Attestation
+import io.github.vvb2060.keyattestation.local.attestation.AttestationResult
+import io.github.vvb2060.keyattestation.local.attestation.AuthorizationList
+import io.github.vvb2060.keyattestation.local.attestation.CertificateInfo
+import io.github.vvb2060.keyattestation.local.attestation.KnoxAttestation
+import io.github.vvb2060.keyattestation.local.lang.AttestationException
 import rikka.recyclerview.IdBasedRecyclerViewAdapter
 
 class HomeAdapter(listener: Listener) : IdBasedRecyclerViewAdapter() {

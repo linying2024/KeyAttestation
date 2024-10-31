@@ -1,6 +1,9 @@
-name: Build CI
+name: Build Ci Manually
 
-on: [ push, pull_request ]
+on:
+  - workflow_dispatch
+  # - push
+  # - pull_request
 
 jobs:
   build:
@@ -9,7 +12,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macOS-latest ]
+        os: 
+          - ubuntu-latest
+          # - windows-latest
+          # - macOS-latest
 
     steps:
       - name: Check out
@@ -22,11 +28,31 @@ jobs:
           cache: 'gradle'
       - name: Build with Gradle
         run: |
+          # 增加最大堆空间到 4096 MiB
+          echo 'org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m'
+          # 启用构建缓存
           echo 'org.gradle.caching=true' >> gradle.properties
           ./gradlew assemble
           ./gradlew --stop
+
+      # 拆分文件上传
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.os }}-artifact
-          path: app/build/outputs
+          name: ${{ matrix.os }}_release
+          path: app/build/outputs/apk/release
+      - name: Upload debug artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}_debug
+          path: app/build/outputs/apk/debug
+      - name: Upload build log artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}_buildlog
+          path: app/build/outputs/logs
+      - name: Upload mapping artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.os }}_mapping
+          path: app/build/outputs/mapping

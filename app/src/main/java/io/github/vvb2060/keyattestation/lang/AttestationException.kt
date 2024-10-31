@@ -1,6 +1,6 @@
-package io.github.vvb2060.keyattestation.lang
+package io.github.vvb2060.keyattestation.local.lang
 
-import io.github.vvb2060.keyattestation.R
+import io.github.vvb2060.keyattestation.local.R
 
 class AttestationException(code: Int, cause: Throwable) : RuntimeException(cause) {
 

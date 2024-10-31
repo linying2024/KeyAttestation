@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.app
+package io.github.vvb2060.keyattestation.local.app
 
 import android.graphics.Color
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.Toolbar
-import io.github.vvb2060.keyattestation.R
+import io.github.vvb2060.keyattestation.local.R
 import rikka.material.widget.AppBarLayout
 
 abstract class AppBarActivity : AppActivity() {

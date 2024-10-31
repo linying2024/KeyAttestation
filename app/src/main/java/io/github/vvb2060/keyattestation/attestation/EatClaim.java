@@ -1,6 +1,6 @@
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
-import static io.github.vvb2060.keyattestation.attestation.AuthorizationList.*;
+import static io.github.vvb2060.keyattestation.local.attestation.AuthorizationList.*;
 
 class EatClaim {
     public static final int IAT = 6;

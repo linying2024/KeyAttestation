@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.util
+package io.github.vvb2060.keyattestation.local.util
 
 import android.view.View
 import androidx.viewbinding.ViewBinding

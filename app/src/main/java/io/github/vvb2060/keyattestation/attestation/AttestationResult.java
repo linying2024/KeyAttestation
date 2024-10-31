@@ -1,11 +1,11 @@
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
-import static io.github.vvb2060.keyattestation.attestation.Attestation.KM_SECURITY_LEVEL_SOFTWARE;
-import static io.github.vvb2060.keyattestation.lang.AttestationException.CODE_CANT_PARSE_CERT;
+import static io.github.vvb2060.keyattestation.local.attestation.Attestation.KM_SECURITY_LEVEL_SOFTWARE;
+import static io.github.vvb2060.keyattestation.local.lang.AttestationException.CODE_CANT_PARSE_CERT;
 
 import java.util.List;
 
-import io.github.vvb2060.keyattestation.lang.AttestationException;
+import io.github.vvb2060.keyattestation.local.lang.AttestationException;
 
 public class AttestationResult {
     private final List<CertificateInfo> certs;

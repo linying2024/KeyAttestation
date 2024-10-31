@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdk 35
-    namespace 'io.github.vvb2060.keyattestation.stub'
+    namespace 'io.github.vvb2060.keyattestation.local.stub'
     defaultConfig {
         minSdk 24
     }

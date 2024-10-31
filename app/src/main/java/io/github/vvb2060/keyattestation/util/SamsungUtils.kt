@@ -1,10 +1,10 @@
-package io.github.vvb2060.keyattestation.util
+package io.github.vvb2060.keyattestation.local.util
 
 import android.content.pm.PackageManager
 import android.os.SystemProperties
 import android.util.Log
 import androidx.core.content.ContextCompat
-import io.github.vvb2060.keyattestation.AppApplication
+import io.github.vvb2060.keyattestation.local.AppApplication
 
 object SamsungUtils {
     private const val SAMSUNG_KEYSTORE_PERMISSION =

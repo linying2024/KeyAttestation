@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.ktx
+package io.github.vvb2060.keyattestation.local.ktx
 
 import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread

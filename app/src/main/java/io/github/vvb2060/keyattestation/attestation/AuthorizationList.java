@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
 import static com.google.common.base.Functions.forMap;
 import static com.google.common.collect.Collections2.transform;
@@ -39,7 +39,7 @@ import java.util.Set;
 
 import co.nstant.in.cbor.model.DataItem;
 import co.nstant.in.cbor.model.Number;
-import io.github.vvb2060.keyattestation.AppApplication;
+import io.github.vvb2060.keyattestation.local.AppApplication;
 
 public class AuthorizationList {
     // Algorithm values.

@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.local.attestation;
+
+import android.util.Log; // 导入安卓Log类
 
 import com.google.common.io.BaseEncoding;
 
@@ -107,6 +109,7 @@ public class RootOfTrust {
             sb.append("\nverifiedBootHash: ")
                     .append(BaseEncoding.base16().encode(verifiedBootHash));
         }
+        Log.i("[KeyAttestationAPP][INFO]", sb.toString()); // 将结果打印到logcat并设置等级为信息
         return sb.toString();
     }
 

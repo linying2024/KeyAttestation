@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
 import android.util.Log;
 
@@ -27,7 +27,7 @@ import java.security.cert.X509Certificate;
 import java.util.Set;
 
 import co.nstant.in.cbor.CborException;
-import io.github.vvb2060.keyattestation.AppApplication;
+import io.github.vvb2060.keyattestation.local.AppApplication;
 
 /**
  * Parses an attestation certificate and provides an easy-to-use interface for examining the

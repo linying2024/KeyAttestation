@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
 import com.google.common.io.BaseEncoding;
 

@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -18,8 +18,8 @@ import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import io.github.vvb2060.keyattestation.AppApplication;
-import io.github.vvb2060.keyattestation.R;
+import io.github.vvb2060.keyattestation.local.AppApplication;
+import io.github.vvb2060.keyattestation.local.R;
 
 public record RevocationList(String status, String reason) {
     private static final JSONObject data = loadData();

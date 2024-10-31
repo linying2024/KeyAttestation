@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.util
+package io.github.vvb2060.keyattestation.local.util
 
 /**
  * A generic class that holds a value with its loading status.

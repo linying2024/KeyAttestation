@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import androidx.annotation.StringRes
 

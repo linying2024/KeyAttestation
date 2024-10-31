@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation
+package io.github.vvb2060.keyattestation.local
 
 import android.app.Application
 import android.content.Context

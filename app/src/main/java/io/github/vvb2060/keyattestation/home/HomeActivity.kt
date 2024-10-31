@@ -1,9 +1,9 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import android.os.Bundle
-import io.github.vvb2060.keyattestation.BuildConfig
-import io.github.vvb2060.keyattestation.R
-import io.github.vvb2060.keyattestation.app.AppBarFragmentActivity
+import io.github.vvb2060.keyattestation.local.BuildConfig
+import io.github.vvb2060.keyattestation.local.R
+import io.github.vvb2060.keyattestation.local.app.AppBarFragmentActivity
 
 class HomeActivity : AppBarFragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

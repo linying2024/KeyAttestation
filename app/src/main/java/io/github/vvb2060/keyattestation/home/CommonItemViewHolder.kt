@@ -1,15 +1,15 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import android.content.Context
 import android.view.View
 import androidx.core.view.isVisible
-import io.github.vvb2060.keyattestation.AppApplication
-import io.github.vvb2060.keyattestation.R
-import io.github.vvb2060.keyattestation.attestation.Attestation.KM_SECURITY_LEVEL_STRONG_BOX
-import io.github.vvb2060.keyattestation.attestation.Attestation.KM_SECURITY_LEVEL_TRUSTED_ENVIRONMENT
-import io.github.vvb2060.keyattestation.attestation.AuthorizationList
-import io.github.vvb2060.keyattestation.attestation.CertificateInfo
-import io.github.vvb2060.keyattestation.databinding.HomeCommonItemBinding
+import io.github.vvb2060.keyattestation.local.AppApplication
+import io.github.vvb2060.keyattestation.local.R
+import io.github.vvb2060.keyattestation.local.attestation.Attestation.KM_SECURITY_LEVEL_STRONG_BOX
+import io.github.vvb2060.keyattestation.local.attestation.Attestation.KM_SECURITY_LEVEL_TRUSTED_ENVIRONMENT
+import io.github.vvb2060.keyattestation.local.attestation.AuthorizationList
+import io.github.vvb2060.keyattestation.local.attestation.CertificateInfo
+import io.github.vvb2060.keyattestation.local.databinding.HomeCommonItemBinding
 import rikka.core.res.resolveColorStateList
 import rikka.recyclerview.BaseViewHolder.Creator
 import java.util.Date

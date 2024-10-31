@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.app
+package io.github.vvb2060.keyattestation.local.app
 
 import android.content.res.Resources
 import android.graphics.Color

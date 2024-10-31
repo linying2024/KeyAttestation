@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
 import android.util.Base64;
 import android.util.Log;
@@ -24,7 +24,7 @@ import java.util.Set;
 import co.nstant.in.cbor.CborDecoder;
 import co.nstant.in.cbor.model.Map;
 import co.nstant.in.cbor.model.Number;
-import io.github.vvb2060.keyattestation.AppApplication;
+import io.github.vvb2060.keyattestation.local.AppApplication;
 
 public class CertificateInfo {
     public static final int KEY_FAILED = -1;

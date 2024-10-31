@@ -1,12 +1,12 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import android.content.res.ColorStateList
 import android.view.View
 import androidx.core.view.isVisible
-import io.github.vvb2060.keyattestation.R
-import io.github.vvb2060.keyattestation.attestation.AttestationResult
-import io.github.vvb2060.keyattestation.attestation.RootOfTrust
-import io.github.vvb2060.keyattestation.databinding.HomeHeaderBinding
+import io.github.vvb2060.keyattestation.local.R
+import io.github.vvb2060.keyattestation.local.attestation.AttestationResult
+import io.github.vvb2060.keyattestation.local.attestation.RootOfTrust
+import io.github.vvb2060.keyattestation.local.databinding.HomeHeaderBinding
 import rikka.core.res.resolveColor
 import rikka.recyclerview.BaseViewHolder.Creator
 

@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import android.app.Dialog
 import android.content.Context
@@ -19,19 +19,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
-import io.github.vvb2060.keyattestation.AppApplication
-import io.github.vvb2060.keyattestation.BuildConfig
-import io.github.vvb2060.keyattestation.R
-import io.github.vvb2060.keyattestation.app.AlertDialogFragment
-import io.github.vvb2060.keyattestation.app.AppActivity
-import io.github.vvb2060.keyattestation.app.AppFragment
-import io.github.vvb2060.keyattestation.attestation.Attestation
-import io.github.vvb2060.keyattestation.attestation.CertificateInfo
-import io.github.vvb2060.keyattestation.databinding.HomeBinding
-import io.github.vvb2060.keyattestation.ktx.activityViewModels
-import io.github.vvb2060.keyattestation.ktx.toHtml
-import io.github.vvb2060.keyattestation.lang.AttestationException
-import io.github.vvb2060.keyattestation.util.Status
+import io.github.vvb2060.keyattestation.local.AppApplication
+import io.github.vvb2060.keyattestation.local.BuildConfig
+import io.github.vvb2060.keyattestation.local.R
+import io.github.vvb2060.keyattestation.local.app.AlertDialogFragment
+import io.github.vvb2060.keyattestation.local.app.AppActivity
+import io.github.vvb2060.keyattestation.local.app.AppFragment
+import io.github.vvb2060.keyattestation.local.attestation.Attestation
+import io.github.vvb2060.keyattestation.local.attestation.CertificateInfo
+import io.github.vvb2060.keyattestation.local.databinding.HomeBinding
+import io.github.vvb2060.keyattestation.local.ktx.activityViewModels
+import io.github.vvb2060.keyattestation.local.ktx.toHtml
+import io.github.vvb2060.keyattestation.local.lang.AttestationException
+import io.github.vvb2060.keyattestation.local.util.Status
 import rikka.html.text.HtmlCompat
 import rikka.widget.borderview.BorderView
 

@@ -1,4 +1,4 @@
-package io.github.vvb2060.keyattestation.app
+package io.github.vvb2060.keyattestation.local.app
 
 import androidx.fragment.app.Fragment
 

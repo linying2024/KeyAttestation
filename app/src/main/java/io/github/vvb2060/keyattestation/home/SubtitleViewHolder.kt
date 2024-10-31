@@ -1,7 +1,7 @@
-package io.github.vvb2060.keyattestation.home
+package io.github.vvb2060.keyattestation.local.home
 
 import android.view.View
-import io.github.vvb2060.keyattestation.databinding.HomeSubtitleBinding
+import io.github.vvb2060.keyattestation.local.databinding.HomeSubtitleBinding
 import rikka.recyclerview.BaseViewHolder.Creator
 
 class SubtitleViewHolder(itemView: View, binding: HomeSubtitleBinding) : HomeViewHolder<SubtitleData, HomeSubtitleBinding>(itemView, binding) {
