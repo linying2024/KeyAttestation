@@ -29,7 +29,7 @@ jobs:
       - name: Build with Gradle
         run: |
           # 增加最大堆空间到 4096 MiB
-          echo 'org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m'
+          echo 'org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m' >> gradle.properties
           # 启用构建缓存
           echo 'org.gradle.caching=true' >> gradle.properties
           ./gradlew assemble
