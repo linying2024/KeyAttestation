@@ -49,8 +49,9 @@ jobs:
           # override default build-tools version (29.0.3) -- optional
           BUILD_TOOLS_VERSION: "35.0.2"
           
-      - name: Sign Debug APK
-        uses: noriban/sign-android-release@v5.1
+      - uses: noriban/sign-android-release@v5
+        name: Sign app APK
+        # ID used to access action output
         id: sign_app
         with:
           releaseDirectory: app/build/outputs/apk/debug
@@ -59,7 +60,7 @@ jobs:
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
         env:
-          # override default build-tools version (29.0.3) -- optional
+          # override default build-tools version (34.0.0) -- optional
           BUILD_TOOLS_VERSION: "35.0.2"
 
       # 拆分文件上传
