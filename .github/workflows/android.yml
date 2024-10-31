@@ -55,8 +55,9 @@ jobs:
           keyPassword: ${{ secrets.ALIAS_PASSWORD }}
           customArgs: --v1-signing-enabled,true,--v2-signing-enabled,true,--v3-signing-enabled,true,--v3.1-signing-enabled,true,--v4-signing-enabled,true,--v5-signing-enabled,true,--v5.1-signing-enabled,true
         env:
-          ANDROID_HOME: ${{ runner.workspace }}/Android/Sdk
-
+          # override default build-tools version (29.0.3) -- optional
+          BUILD_TOOLS_VERSION: "35.0.2"
+      
       - name: Run shell
         run: |
           echo ""
@@ -71,8 +72,8 @@ jobs:
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.ALIAS_PASSWORD }}
         env:
-          ANDROID_HOME: ${{ runner.workspace }}/Android/Sdk
-
+          # override default build-tools version (29.0.3) -- optional
+          BUILD_TOOLS_VERSION: "35.0.2"
       # 拆分文件上传
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
