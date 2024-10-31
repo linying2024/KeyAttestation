@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Decode signing files
         run: |
-          echo fileDir=`pwd`/key.jks >> local.properties
+          echo storeFile=`pwd`/key.jks >> local.properties
           echo "${{ secrets.KEY_STORE }}" | base64 --decode > key.jks
           echo "storePassword=${{ secrets.KEY_STORE_PASSWORD }}" >> local.properties
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> local.properties
