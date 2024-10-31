@@ -37,6 +37,13 @@ jobs:
           ./gradlew --stop
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+      - name: Install Build Tools
+        run: |
+          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;35.0.2"
+          $ANDROID_HOME/tools/bin/sdkmanager --list
+      - name: Add Build Tools to PATH
+        run: |
+          echo "$ANDROID_HOME/build-tools/35.0.2" >> $GITHUB_PATH
       - name: Sign Release APK
         uses: upup-company/apksigner-android@v1
         id: sign_app
@@ -47,6 +54,8 @@ jobs:
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.ALIAS_PASSWORD }}
           customArgs: --v1-signing-enabled,true,--v2-signing-enabled,true,--v3-signing-enabled,true,--v3.1-signing-enabled,true,--v4-signing-enabled,true,--v5-signing-enabled,true,--v5.1-signing-enabled,true
+        env:
+          ANDROID_HOME: ${{ runner.workspace }}/Android/Sdk
 
       - name: Run shell
         run: |
@@ -61,6 +70,8 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.ALIAS_PASSWORD }}
+        env:
+          ANDROID_HOME: ${{ runner.workspace }}/Android/Sdk
 
       # 拆分文件上传
       - name: Upload build artifact
