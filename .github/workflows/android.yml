@@ -20,49 +20,94 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v3
-      - name: Decode signing files
-        run: |
-          echo storeFile=`pwd`/key.jks >> local.properties
-          echo "${{ secrets.KEY_STORE }}" | base64 --decode > key.jks
-          echo "storePassword=${{ secrets.KEY_STORE_PASSWORD }}" >> local.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> local.properties
-          echo "keyPassword=${{ secrets.KEY_ALIAS_PASSWORD }}" >> local.properties
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
-
       - name: Build with Gradle
         run: |
           # 增加最大堆空间到 4096 MiB
           echo 'org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m' >> gradle.properties
           # 启用构建缓存
           echo 'org.gradle.caching=true' >> gradle.properties
-          ./gradlew assembleRelease
+          ./gradlew assemble
+          ./gradlew --stop
 
-      # 拆分文件上传
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+      - name: Sign Release APK
+        uses: upup-company/apksigner-android@v1
+        id: sign_app
         with:
-          name: ${{ matrix.os }}_release
-          path: app/build/outputs/apk/release
-      - name: Upload debug artifact
-        uses: actions/upload-artifact@v3
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.KEY_STORE }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+name: Build Ci Manually
+
+on:
+  - workflow_dispatch
+  # - push
+  # - pull_request
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: 
+          - ubuntu-latest
+          # - windows-latest
+          # - macOS-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          name: ${{ matrix.os }}_debug
-          path: app/build/outputs/apk/debug
-      - name: Upload build log artifact
-        uses: actions/upload-artifact@v3
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - name: Build with Gradle
+        run: |
+          # 增加最大堆空间到 4096 MiB
+          echo 'org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m' >> gradle.properties
+          # 启用构建缓存
+          echo 'org.gradle.caching=true' >> gradle.properties
+          ./gradlew assemble
+          ./gradlew --stop
+
+      - name: Sign Release APK
+        uses: upup-company/apksigner-android@v1
+        id: sign_app
         with:
-          name: ${{ matrix.os }}_buildlog
-          path: app/build/outputs/logs
-      - name: Upload mapping artifact
-        uses: actions/upload-artifact@v3
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.KEY_STORE }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          customArgs: --v1-signing-enabled,true,--v2-signing-enabled,true,--v3-signing-enabled,true,--v3.1-signing-enabled,true,--v4-signing-enabled,true,--v5-signing-enabled,true,--v5.1-signing-enabled,true
+        env:
+          # override default build-tools version (29.0.3) -- optional
+          BUILD_TOOLS_VERSION: "35.0.2"
+          
+      - name: Sign Debug APK
+        uses: noriban/sign-android-release@v5.1
+        id: sign_app
         with:
-          name: ${{ matrix.os }}_mapping
-          path: app/build/outputs/mapping
+          releaseDirectory: app/build/outputs/apk/debug
+          signingKeyBase64: ${{ secrets.KEY_STORE }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+        env:
+          # override default build-tools version (29.0.3) -- optional
+          BUILD_TOOLS_VERSION: "35.0.2"
+
       # 拆分文件上传
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
