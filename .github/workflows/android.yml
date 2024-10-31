@@ -43,7 +43,7 @@ jobs:
           signingKeyBase64: ${{ secrets.KEY_STORE }}
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          keyPassword: ${{ secrets.ALIAS_PASSWORD }}
           customArgs: --v1-signing-enabled,true,--v2-signing-enabled,true,--v3-signing-enabled,true,--v3.1-signing-enabled,true,--v4-signing-enabled,true,--v5-signing-enabled,true,--v5.1-signing-enabled,true
         env:
           # override default build-tools version (29.0.3) -- optional
@@ -58,7 +58,7 @@ jobs:
           signingKeyBase64: ${{ secrets.KEY_STORE }}
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          keyPassword: ${{ secrets.ALIAS_PASSWORD }}
         env:
           # override default build-tools version (34.0.0) -- optional
           BUILD_TOOLS_VERSION: "35.0.2"
