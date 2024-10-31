@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.vvb2060.keyattestation.local.local.attestation;
+package io.github.vvb2060.keyattestation.local.attestation;
 
 import android.util.Log; // 导入安卓Log类
 
