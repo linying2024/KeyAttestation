@@ -29,28 +29,9 @@ android {
 
     signingConfigs {
         debug {
-            // Debug签名配置，使用Android自带的debug签名
-        }
-        release {
-            // 尝试加载release签名配置
-            try {
-                storeFile file(properties.getProperty("storeFile"))
-                storePassword properties.getProperty("storePassword")
-                keyAlias properties.getProperty("keyAlias")
-                keyPassword properties.getProperty("keyPassword")
-                // 启用v1, v2签名
-                v1SigningEnabled true
-                v2SigningEnabled true
-                // 启用v3和v4签名
-                enableV3Signing true
-                enableV4Signing true
-            } catch (Exception e) {
-                // 如果加载release签名配置失败，使用debug签名配置
-                signingConfig signingConfigs.debug
-            }
+            enabled = false
         }
     }
-    
     buildTypes {
         debug {
             versionNameSuffix '-debug'
@@ -58,7 +39,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             proguardFiles 'proguard-rules.pro'
         }
     }
