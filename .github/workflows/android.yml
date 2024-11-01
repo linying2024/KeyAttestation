@@ -15,18 +15,14 @@ jobs:
         os: 
           - ubuntu-latest
           # - windows-latest
-          # - macOS-latest
-
+          # - macOS-latest      
     steps:
-      - name: Check out
-        uses: actions/checkout@v3
-  
-      - name: Set up JDK 17
+      - uses: actions/checkout@v3 # 检出代码
+      - name: Set up JDK 17 # 设置JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
           java-version: '17'
-          cache: 'gradle'
+          distribution: 'temurin' # 可以选择其他发行版，如'adoptium'
       - name: Build with Gradle
         run: |
           # 增加最大堆空间到 4096 MiB
@@ -37,6 +33,24 @@ jobs:
           ./gradlew --stop
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+      - name: Install JAXB Dependencies # 安装JAXB依赖
+        run: |
+         sudo apt-get update
+         sudo apt-get install -y maven
+         mvn --version
+         mvn dependency:get -Dartifact=javax.xml.bind:jaxb-api:2.3.1
+         mvn dependency:get -Dartifact=com.sun.xml.bind:jaxb-core:2.3.0.1
+         mvn dependency:get -Dartifact=com.sun.xml.bind:jaxb-impl:2.3.0.1
+      - name: Set JAXB_CLASSPATH # 设置环境变量，将JAXB依赖添加到类路径
+        run: |
+          echo "JAXB_CLASSPATH=$HOME/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar:$HOME/.m2/repository/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1.jar:$HOME/.m2/repository/com/sun/xml/bind/jaxb-impl/2.3.0.1/jaxb-impl-2.3.0.1.jar" >> $GITHUB_ENV
+      - name: Build with Android SDK # 构建Android项目
+        run: |
+          echo y | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;35.0.2"
+          $ANDROID_HOME/tools/bin/sdkmanager --list
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.path }} # 设置JAVA_HOME环境变量
+          JAXWS_CLASSPATH: ${{ env.JAXB_CLASSPATH }} # 使用之前设置的JAXB_CLASSPATH环境变量
       - name: Install Build Tools
         run: |
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;35.0.2"
